@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launcher de TV Leve</title>
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: #1c2026;
+            --text-color: #ffffff;
+            --accent-color: #0078ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #eceff4;
+        }
+
+        /* Container dos Apps estilo Grid Limpo */
+        .launcher-grid {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            max-width: 90%;
+        }
+
+        /* Estilização dos Botões/Cards */
+        .app-card {
+            background-color: var(--card-bg);
+            border: 3px solid transparent;
+            border-radius: 16px;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Ícones dos Cards */
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .app-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Efeito Visual quando o Controle Remoto foca no botão */
+        .app-card:focus, .app-card:hover {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: #242b35;
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(0, 120, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Minha Central de Mídia</h1>
+
+    <div class="launcher-grid">
+        <!-- Card do Stremio Web -->
+        <a href="https://web.stremio.com/" class="app-card" tabindex="1">
+            <div class="app-icon">🍇</div>
+            <div class="app-title">Stremio Web</div>
+        </a>
+
+        <!-- Card do YouTube Web -->
+        <a href="https://youtube.com" class="app-card" tabindex="2">
+            <div class="app-icon">📺</div>
+            <div class="app-title">YouTube TV</div>
+        </a>
+
+        <!-- Card do Plex Web -->
+        <a href="https://plex.tv" class="app-card" tabindex="3">
+            <div class="app-icon">💛</div>
+            <div class="app-title">Plex</div>
+        </a>
+
+        <!-- Card do Navegador Google -->
+        <a href="https://google.com" class="app-card" tabindex="4">
+            <div class="app-icon">🌐</div>
+            <div class="app-title">Internet</div>
+        </a>
+    </div>
+
+    <script>
+        // Garante que o primeiro botão seja selecionado automaticamente assim que carregar
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstApp = document.querySelector('.app-card[tabindex="1"]');
+            if (firstApp) firstApp.focus();
+        });
+    </script>
+</body>
+</html>
